@@ -1,0 +1,26 @@
+{
+  "name": "hw13sequelizedburger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Farah33/HW13SequelizedBurger.git"
+  },
+  "author": "khadija",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Farah33/HW13SequelizedBurger/issues"
+  },
+  "homepage": "https://github.com/Farah33/HW13SequelizedBurger#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6"
+  }
+}
