@@ -1,52 +1,46 @@
-//Initialie express
-var express = require('express');
-var router = express.Router();
+//Here we declare our dependencies
 
-//Import the model (burger.js) to use its database functions
-var db = require('.//models');
+var express = require('express'); // express server
+var bodyParser = require('body-parser'); //Middleware
+//var methodOverride = require('method-override'); //For PUT method in HTML
+//var Sequelize = require('sequelize');
+//var models = require('./models');
+// Requiring our models for syncing
+var db = require("./models");
 
-//creating a variable for the model
-var burger = db.burgers;
+var PORT = process.env.PORT || 8080;
 
-//redirect to '/burgers' from root
-router.get('/', function(req, res) {
-    res.redirect('/burgers')
-});
+//setting up express app
+var app = express();
 
-//Creating api routes adn adding logic for routes
-router.get('/burgers', function(req, res) {
-    console.log(burger);
-    burger.findAll({}).then(function(data) {
-        var hbsObject = {
-            burger: data
-        };
-        res.render("index", hbsObject);
+//Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(process.cwd() + '/public'));
+
+
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+
+
+//Express Handlebars
+var exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+
+app.set('view engine', 'handlebars');
+
+//API routes
+var routes = require('./controllers/burgers_controller');
+app.use('/', routes);
+
+//starting server
+db.sequelize.sync({ force: false }).then(function() {
+    app.listen(PORT, function() {
+        console.log(`Server listening on PORT: ${PORT}`);
     });
 });
-
-//Post route for adding a burger to the db
-router.post('/burgers/add', function(req, res) {
-    burger.create({
-        name: req.body.name,
-        devoured: req.body.devoured
-    }).then(function() {
-        res.redirect('/burgers');
-    });
-});
-
-router.put("/burgers/update/:id", function(req, res) {
-    burger.update({
-        devoured: req.body.devoured,
-
-    }, {
-        fields: ['devoured'],
-        where: {
-            id: req.params.id
-        }
-    }).then(function() {
-        res.redirect('/burgers');
-    });
-
-});
-
-module.exports = router;
