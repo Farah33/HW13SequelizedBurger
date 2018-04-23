@@ -1,9 +1,3 @@
-USE burger_db;
+CREATE DATABASE burgers_sequelize_db;
 
-CREATE TABLE burgers
-(
-	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	devoured BOOLEAN DEFAULT false,
-	PRIMARY KEY (id)
-);
+USE burgers_sequelize_db;

@@ -3,20 +3,20 @@
         "username": "root",
         "password": "root",
         "port": 8889,
-        "database": "burger_db",
+        "database": "burgers_sequelize_db",
         "host": "localhost",
         "dialect": "mysql"
     },
     "test": {
         "username": "root",
-        "password": null,
+        "password": "root",
         "database": "database_test",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "production": {
         "username": "root",
-        "password": null,
+        "password": "root",
         "database": "database_production",
         "host": "127.0.0.1",
         "dialect": "mysql"

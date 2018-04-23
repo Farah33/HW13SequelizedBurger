@@ -1,0 +1,39 @@
+body {
+    background-image: url(../img/halftone-yellow.png);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+hr {
+    background-color: grey;
+}
+
+.container {
+    background-color: white;
+    opacity: .8;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+button {
+    background-color: brown;
+    border-color: blueviolet;
+    border-radius: 12px;
+}
+
+button:hover {
+    background-color: red;
+    border-color: yellow;
+}
+
+.burgers {
+    border: solid medium rgb(128, 128, 128);
+    background-color: navajowhite;
+}
+
+.devoureds {
+    background-color: green;
+    color: magenta;
+    border-radius: 13px;
+    padding: 13px;
+}
